@@ -9,7 +9,7 @@ module.exports = class Email {
     this.to = user.email;
     this.firstName = user.name.split(" ")[0];
     this.url = url;
-    this.from = `VRDOOR <${process.env.EMAIL_FROM}>`;
+    this.from = `VRTOUR <${process.env.EMAIL_FROM}>`;
   }
 
   newTransport() {
@@ -57,11 +57,11 @@ module.exports = class Email {
   }
 
   async sendWelcome() {
-    await this.send("welcome", "Welcome to the VRDOOR Family!");
+    await this.send("welcome", "Welcome to the VRTOUR Family!");
   }
 
   async sendPasswordReset() {
-    await this.send("passwordReset", "Your password Reset Token | VRDOOR");
+    await this.send("passwordReset", "Your password Reset Token | VRTOUR");
   }
 
   async sendActivationEmail() {
