@@ -1,7 +1,8 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const asyncHandler = require("express-async-handler");
 const { Property } = require("../model/propertiesModel");
 
-exports.getCheckoutSession = catchAsync(async (req, res, next) => {
+exports.getCheckoutSession = asyncHandler(async (req, res, next) => {
   // 1. Get the currently booked tour
   const amount = req.body.amount;
   const id = req.body.id;
