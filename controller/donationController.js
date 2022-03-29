@@ -38,8 +38,5 @@ exports.getCheckoutSession = asyncHandler(async (req, res, next) => {
     ],
   });
   // 3. Send session as response
-  res.status(200).json({
-    status: 'success',
-    session,
-  });
+  res.redirect(303, session.url);  
 });
