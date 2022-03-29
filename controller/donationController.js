@@ -17,8 +17,8 @@ exports.getCheckoutSession = asyncHandler(async (req, res, next) => {
     // }&user=${req.user.id}&price=${tour.price}`,
     success_url: `https://vrtourpilgrimage.netlify.app/`,
     cancel_url: `https://vrtourpilgrimage.netlify.app/`,
-    customer_email: req.user.email,
-    client_reference_id: req.params.tourID,
+    // customer_email: req.user.email,
+    // client_reference_id: req.params.tourID,
     mode: 'payment',
     line_items: [
       {
