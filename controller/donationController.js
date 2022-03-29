@@ -1,4 +1,4 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const asyncHandler = require("express-async-handler");
 const { Property } = require("../model/propertiesModel");
 
@@ -7,11 +7,10 @@ exports.getCheckoutSession = asyncHandler(async (req, res, next) => {
   const amount = req.body.amount;
   const id = req.body.id;
   const property = await Property.findById(id);
-  
 
   // 2. Create the checkout session
   const session = await stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
+    payment_method_types: ["card"],
     // success_url: `${req.protocol}://${req.get('host')}/?tour=${
     //   req.params.tourID
     // }&user=${req.user.id}&price=${tour.price}`,
@@ -19,19 +18,17 @@ exports.getCheckoutSession = asyncHandler(async (req, res, next) => {
     cancel_url: `https://vrtourpilgrimage.netlify.app/`,
     // customer_email: req.user.email,
     // client_reference_id: req.params.tourID,
-    mode: 'payment',
+    mode: "payment",
     line_items: [
       {
         quantity: 1,
         price_data: {
-          currency: 'inr',
+          currency: "inr",
           unit_amount: amount,
           product_data: {
             name: `${property.title}`,
             // description: tour.summary,
-            images: [
-              `${property.properyImage}`,
-            ],
+            images: [`${property.properyImage}`],
           },
         },
       },
