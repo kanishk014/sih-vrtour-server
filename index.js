@@ -9,6 +9,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 const userRouter = require("./routes/userRouter");
 const meetingRouter = require("./routes/meetingRoutes");
+const donationRouter = require("./routes/donationRoutes");
 
 const propertyRouter = require("./routes/propertyRoutes");
 const { errorHandler, notFound } = require("./middleware/errorMiddleware");
@@ -43,6 +44,7 @@ app.use("/api/meet", meetingRouter);
 
 app.use("/api/users", userRouter);
 app.use("/api/property", propertyRouter);
+app.use("/api/bookings", donationRouter);
 
 app.get("/",(req,res)=>{
     res.json("Home")
