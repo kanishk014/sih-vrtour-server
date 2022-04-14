@@ -232,7 +232,7 @@ exports.getProperty = asyncHandler(async (req, res) => {
     const val = req.params.category.charAt(0).toUpperCase()+req.params.category.slice(1)
     console.log(val);
 	try {
-		const properties = await Property.find({category:val});
+		const properties = await Property.find({});
 		if (properties) {
 			res.status(200).json(properties);
 		} else {
