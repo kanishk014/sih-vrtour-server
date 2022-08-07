@@ -63,17 +63,17 @@ const propertySchema = new mongoose.Schema(
 		activities: {
       type: [String],
     },
-		feel_360: {
+		feel360: {
 			type: String,
 			// required: true,
 		},
-    map_location: {
+    mapLocation: {
       type: String,
     },
     video: {
       type: String,
     },
-    book_ticket: {
+    websiteUrl: {
       type: String,
     }
 	},
