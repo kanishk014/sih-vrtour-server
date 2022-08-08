@@ -5,7 +5,7 @@ const { User } = require("../model/userModel");
 const Email = require("../utils/email");
 const crypto = require("crypto");
 
-const Property = require("../model/propertiesModel");
+const { Property } = require("../model/propertiesModel");
 
 const { generateToken } = require("../utils/generateToken");
 const expressAsyncHandler = require("express-async-handler");
