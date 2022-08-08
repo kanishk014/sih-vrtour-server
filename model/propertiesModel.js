@@ -27,7 +27,7 @@ const propertySchema = new mongoose.Schema(
       type: Number,
     },
 		type: {
-			type: String,
+			type: Number, //  1 -> temple
 			// required: true,
 		},		
 		builtYear: {
@@ -38,7 +38,7 @@ const propertySchema = new mongoose.Schema(
 			type: Number,
 			// required: true,
 		},
-		location: {
+		address: {
 			type: String,
 			// required: true,
 		},
@@ -82,6 +82,4 @@ const propertySchema = new mongoose.Schema(
 	{ timestamps: true }
 );
 
-const property = mongoose.model("property", propertySchema);
-
-exports.Property = property;
+module.exports = mongoose.model("property", propertySchema);

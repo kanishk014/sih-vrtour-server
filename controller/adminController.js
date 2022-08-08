@@ -21,7 +21,7 @@ exports.addProperty = asyncHandler(async (req, res) => {
       type,
       builtYear,
       parkingSpaces,
-      location,
+      address,
       timings,
       aartiTime,
       tourTime,
@@ -47,7 +47,7 @@ exports.addProperty = asyncHandler(async (req, res) => {
       type,
       builtYear,
       parkingSpaces,
-      location,
+      address,
       timings,
       aartiTime,
       tourTime,
@@ -63,7 +63,8 @@ exports.addProperty = asyncHandler(async (req, res) => {
       websiteUrl,
     }
 
-    const result = await Property.create(payload);
+    const result = await Property(payload);
+    result.save();
 
     return res.status(200).json({
       message: "Success",

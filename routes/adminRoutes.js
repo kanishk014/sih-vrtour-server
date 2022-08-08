@@ -5,4 +5,4 @@ const adminController = require("../controller/adminController");
 
 adminRouter.route("/addProperty").post(adminController.addProperty);
 
-module.exports = donationRouter;
+module.exports = adminRouter;
