@@ -15,12 +15,17 @@ const adminRouter = require("./routes/adminRoutes");
 const propertyRouter = require("./routes/propertyRoutes");
 const { errorHandler, notFound } = require("./middleware/errorMiddleware");
 
-app.use(
-	cors({
-		origin: "*",
-	})
-);
 
+app.use(
+  cors({
+    origin: "*",
+	})
+  );
+
+app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static("public"));
+app.use("/uploads/propertyImages", express.static("uploads/propertyImages"));
+  
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
