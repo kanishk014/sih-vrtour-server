@@ -27,7 +27,7 @@ const propertySchema = new mongoose.Schema(
       type: Number,
     },
 		type: {
-			type: Number, //  1 -> temple
+			type: String, //  1 -> temple
 			// required: true,
 		},		
 		builtYear: {
