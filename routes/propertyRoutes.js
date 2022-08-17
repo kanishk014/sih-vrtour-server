@@ -5,8 +5,8 @@ const propertyRouter = express.Router();
 // propertyRouter.get("/get/:category", getProperty);
 
 const { addProperty, getProperty, updateProperty, deleteProperty, getPropertyByUserId, getPropertyDetailsById } = require("../controller/properties");
-propertyRouter.post("/add", addProperty);
 propertyRouter.get("/get", getProperty);
+propertyRouter.post("/add", addProperty);
 propertyRouter.patch("/update/:id", updateProperty);
 propertyRouter.delete("/delete/:id", deleteProperty);
 propertyRouter.get("/getuserproperty/:id", getPropertyByUserId);
