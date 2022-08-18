@@ -75,6 +75,9 @@ exports.registerUser = asyncHandler(async (req, res) => {
 			// )}/api/users/verified/${activationToken}`;
 			const url = `https://vrtourpilgrimage.netlify.app/activateuser?activate=${activationToken}`;
 
+      console.log(process.env.EMAIL_USERNAME);
+      console.log(process.env.EMAIL_PASSWORD);
+
 			await new Email(newUser, url).sendActivationEmail();
 
 			res.status(200).json(newUser);
