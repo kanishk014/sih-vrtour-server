@@ -68,7 +68,7 @@ exports.addProperty = asyncHandler(async (req, res) => {
       let name = title.slice(0, title.indexOf(' ')) + "-pilgrimage-" + date;
       let folderPath = "./uploads/propertyImages/";
       const imageName = helper.saveImage(propertyImage, name, folderPath);
-      payload = { ...payload, propertyImage: "https://vrtour-sih.herokuapp.com/uploads/propertyImages/" + imageName };
+      payload = { ...payload, propertyImage: "http://43.204.24.76:4000/uploads/propertyImages/" + imageName };
     }
 
     const result = await Property(payload);
