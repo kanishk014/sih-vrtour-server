@@ -4,7 +4,7 @@ const Booking = require("../model/bookingModel");
 exports.bookTicket = asyncHandler(async (req, res) => {
   try{
 
-    const {user} = req.user;
+    const user = req.user;
 
     const {
       name,      
@@ -37,6 +37,6 @@ exports.bookTicket = asyncHandler(async (req, res) => {
   catch(err){
     res.status(400);
 
-		throw new Error(e.message);
+		throw new Error(err.message);
   }
 })

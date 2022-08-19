@@ -11,6 +11,7 @@ const userRouter = require("./routes/userRouter");
 const meetingRouter = require("./routes/meetingRoutes");
 const donationRouter = require("./routes/donationRoutes");
 const adminRouter = require("./routes/adminRoutes");
+const bookingRouter = require("./routes/bookingRoutes");
 
 const propertyRouter = require("./routes/propertyRoutes");
 const { errorHandler, notFound } = require("./middleware/errorMiddleware");
@@ -56,6 +57,7 @@ app.use("/api/meet", meetingRouter);
 app.use("/api/users", userRouter);
 app.use("/api/property", propertyRouter);
 app.use("/api/bookings", donationRouter);
+app.use("/api/ticketBooking", bookingRouter);
 app.use("/api/admin", adminRouter);
 
 app.get("/",(req,res)=>{
