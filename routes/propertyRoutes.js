@@ -4,12 +4,13 @@ const propertyRouter = express.Router();
 // propertyRouter.post("/add", addProperty);
 // propertyRouter.get("/get/:category", getProperty);
 
-const { addProperty, getProperty, updateProperty, deleteProperty, getPropertyByUserId, getPropertyDetailsById } = require("../controller/properties");
+const { addProperty, getProperty, updateProperty, deleteProperty, getPropertyByUserId, getPropertyDetailsById, getImage } = require("../controller/properties");
 propertyRouter.get("/get", getProperty);
 propertyRouter.post("/add", addProperty);
 propertyRouter.patch("/update/:id", updateProperty);
 propertyRouter.delete("/delete/:id", deleteProperty);
 propertyRouter.get("/getuserproperty/:id", getPropertyByUserId);
 propertyRouter.get("/getpropertydetails/:id", getPropertyDetailsById);
+propertyRouter.get("/getImage/:key", getImage);
 
 module.exports = propertyRouter;

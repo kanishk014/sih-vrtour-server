@@ -7,6 +7,7 @@ const crypto = require("crypto");
 
 const { Property } = require("../model/propertiesModel");
 const helper = require("../utils/apiHelper");
+const {uploadFile} = require("../utils/s3");
 
 const { generateToken } = require("../utils/generateToken");
 const expressAsyncHandler = require("express-async-handler");
@@ -67,8 +68,9 @@ exports.addProperty = asyncHandler(async (req, res) => {
       let date = new Date().getTime();
       let name = title.slice(0, title.indexOf(' ')) + "-pilgrimage-" + date;
       let folderPath = "./uploads/propertyImages/";
-      const imageName = helper.saveImage(propertyImage, name, folderPath);
-      payload = { ...payload, propertyImage: "http://43.204.24.76:4000/uploads/propertyImages/" + imageName };
+      const imageName = helper.saveImage(propertyImage, name, folderPath);      
+      const result = await uploadFile(`./uploads/propertyImages/${name}.jpeg`, name);      
+      payload = { ...payload, propertyImage: "https://vrtour-sih.herokuapp.com/api/property/getImage/" + result.Key };
     }
 
     const result = await Property(payload);

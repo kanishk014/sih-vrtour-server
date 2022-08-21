@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 // var bcrypt = require("bcryptjs");
 const { Property } = require("../model/propertiesModel");
+const {getFileStream} = require("../utils/s3");
 const mongoose=require("mongoose")
 exports.addProperty = asyncHandler(async (req, res) => {
     // var id = mongoose.Types.ObjectId("4edd40c86762e0fb12000003");
@@ -317,3 +318,17 @@ exports.getPropertyDetailsById = asyncHandler(async (req, res) => {
 		throw new Error(e.message);
 	}
 });
+
+exports.getImage = asyncHandler(async(req, res) => {
+  try{
+    const key = req.params.key;
+    const readStream = getFileStream(key);
+
+    readStream.pipe(res);
+  }
+  catch(err){
+    res.status(400);
+
+    throw new Error(err.message);
+  }
+})
