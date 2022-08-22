@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 // var bcrypt = require("bcryptjs");
 const { Property } = require("../model/propertiesModel");
+const helper = require("../utils/apiHelper");
 const {uploadFile} = require("../utils/s3");
 const {getFileStream} = require("../utils/s3");
 const mongoose=require("mongoose")
