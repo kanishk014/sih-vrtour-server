@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 // var bcrypt = require("bcryptjs");
 const { Property } = require("../model/propertiesModel");
+const {uploadFile} = require("../utils/s3");
 const {getFileStream} = require("../utils/s3");
 const mongoose=require("mongoose")
 exports.addProperty = asyncHandler(async (req, res) => {
@@ -269,7 +270,19 @@ exports.getPropertyByUserId = asyncHandler(async (req, res) => {
 });
 
 exports.updateProperty = asyncHandler(async (req, res) => {
-  const doc = await Property.findByIdAndUpdate(req.params.id, req.body, {
+
+  const body = req.body;
+
+  if(propertyImage){
+    let date = new Date().getTime();
+    let name = body.title.slice(0, body.title.indexOf(' ')) + "-pilgrimage-" + date;
+    let folderPath = "./uploads/propertyImages/";
+    const imageName = helper.saveImage(propertyImage, name, folderPath);      
+    const result = await uploadFile(`./uploads/propertyImages/${name}.jpeg`, name);      
+    body = { ...body, propertyImage: "https://vrtour-sih.herokuapp.com/api/property/getImage/" + result.Key };
+  }
+
+  const doc = await Property.findByIdAndUpdate(req.params.id, body, {
     new: true,    
   });
 
