@@ -273,11 +273,11 @@ exports.updateProperty = asyncHandler(async (req, res) => {
 
   const body = req.body;
 
-  if(propertyImage){
+  if(body.propertyImage){
     let date = new Date().getTime();
     let name = body.title.slice(0, body.title.indexOf(' ')) + "-pilgrimage-" + date;
     let folderPath = "./uploads/propertyImages/";
-    const imageName = helper.saveImage(propertyImage, name, folderPath);      
+    const imageName = helper.saveImage(body.propertyImage, name, folderPath);      
     const result = await uploadFile(`./uploads/propertyImages/${name}.jpeg`, name);      
     body = { ...body, propertyImage: "https://vrtour-sih.herokuapp.com/api/property/getImage/" + result.Key };
   }
