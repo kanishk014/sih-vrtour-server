@@ -67,6 +67,9 @@ const propertySchema = new mongoose.Schema(
 			type: String,
 			// required: true,
 		},
+    vrVideo: {
+      type: String,
+    },
     mapLocation: {
       type: String,
     },
