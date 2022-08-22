@@ -272,7 +272,7 @@ exports.getPropertyByUserId = asyncHandler(async (req, res) => {
 
 exports.updateProperty = asyncHandler(async (req, res) => {
 
-  const body = req.body;
+  let body = req.body;
 
   if(body.propertyImage){
     let date = new Date().getTime();
