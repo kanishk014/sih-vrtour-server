@@ -235,7 +235,17 @@ exports.getProperty = asyncHandler(async (req, res) => {
     // const val = req.params.category.charAt(0).toUpperCase()+req.params.category.slice(1)
     // console.log(val);
 	try {
-		const properties = await Property.find({});
+    let properties = await Property.find({});
+
+    if(req.query.sort){
+      if(req.query.sort == "asc"){
+        properties = await Property.find().sort({"title": 1});
+      }
+      else if(req.query.sort){
+        properties = await Property.find().sort({"title": -1});
+      }
+    }    
+
 		if (properties) {
 			res.status(200).json(properties);
 		} else {
@@ -367,6 +377,8 @@ exports.getNearbyPlaces = asyncHandler(async(req, res) => {
         }
       })
     )
+
+    console.log("Properties: ", data);
 
     return res.json({
       status: "success",
