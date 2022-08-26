@@ -76,6 +76,12 @@ const propertySchema = new mongoose.Schema(
     video: {
       type: String,
     },
+    latitude: {
+      type: Number,      
+    },
+    longitude: {
+      type: Number,
+    },
     websiteUrl: {
       type: String,
     }
