@@ -346,3 +346,36 @@ exports.getImage = asyncHandler(async(req, res) => {
     throw new Error(err.message);
   }
 })
+
+exports.getNearbyPlaces = asyncHandler(async(req, res) => {
+  try{
+    const {
+      latitude,
+      longitude
+    } = req.body;
+
+    const places = await Property.find();
+
+    let data = [];
+
+    await Promise.all(
+      places.map(async (place) => {
+        if(place.latitude){
+          if(helper.checkDistance(latitude, longitude, place.latitude, place.longitude) <= 100){            
+            data.push(place);
+          }
+        }
+      })
+    )
+
+    return res.json({
+      status: "success",
+      data: data
+    })
+  }
+  catch(err){
+    res.status(400);
+
+    throw new Error(err.message);
+  }
+})
