@@ -376,9 +376,7 @@ exports.getNearbyPlaces = asyncHandler(async(req, res) => {
           }
         }
       })
-    )
-
-    console.log("Properties: ", data);
+    )    
 
     return res.json({
       status: "success",
