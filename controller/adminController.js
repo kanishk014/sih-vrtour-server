@@ -72,7 +72,7 @@ exports.addProperty = asyncHandler(async (req, res) => {
       let folderPath = "./uploads/propertyImages/";
       const imageName = helper.saveImage(propertyImage, name, folderPath);      
       const result = await uploadFile(`./uploads/propertyImages/${name}.jpeg`, name);      
-      payload = { ...payload, propertyImage: "https://vrtour-sih.herokuapp.com/api/property/getImage/" + result.Key };
+      payload = { ...payload, propertyImage: "http://localhost:4000/api/property/getImage/" + result.Key };
     }
 
     const result = await Property(payload);
